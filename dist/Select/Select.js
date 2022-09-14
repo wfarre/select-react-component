@@ -19,13 +19,15 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 const Select = _ref => {
   let {
-    data
+    data,
+    handleSelect
   } = _ref;
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [selectedItem, setSelectedItem] = (0, _react.useState)(data[0]);
 
   const handleOptionClicked = e => {
-    setSelectedItem(e.target.innerHTML);
+    setSelectedItem(e.target.innerText);
+    handleSelect(e.target.innerText);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -33,25 +35,32 @@ const Select = _ref => {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dropdown",
     onClick: () => setIsOpen(!isOpen)
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: isOpen ? "dropdown__button" : "dropdown__button"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "selected-item"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "dropdown__button",
+    "data-bs-toggle": "dropdown",
+    "aria-expanded": isOpen ? "true" : "false",
+    "data-testid": "button"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "selected-item",
+    "data-testid": "button-text"
   }, selectedItem), /*#__PURE__*/_react.default.createElement("span", {
     className: "icon-wrapper"
   }, /*#__PURE__*/_react.default.createElement(_caretDownSolid.ReactComponent, {
     className: "arrow-icon"
   }))), /*#__PURE__*/_react.default.createElement("ul", {
-    className: isOpen ? "dropdown__menu" : "dropdown__menu hide"
+    className: isOpen ? "dropdown__menu" : "dropdown__menu hide",
+    "data-testid": "dropdown"
   }, data.map(function (item) {
     let key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     key++;
     return /*#__PURE__*/_react.default.createElement("li", {
       className: "dropdown__menu__item",
       key: key,
-      onClick: handleOptionClicked
+      onClick: handleOptionClicked,
+      "data-testid": "item"
     }, /*#__PURE__*/_react.default.createElement("p", {
-      className: "dropdown__menu__item__content"
+      className: "dropdown__menu__item__content",
+      "data-testid": "content"
     }, item));
   }))));
 };
