@@ -28,18 +28,21 @@ const Select = _ref => {
   const handleOptionClicked = e => {
     setSelectedItem(e.target.innerText);
     handleSelect(e.target.innerText);
+    setIsOpen(false);
   };
 
+  console.log(isOpen);
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Select"
+    className: "Select",
+    onMouseLeave: () => setIsOpen(false)
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "dropdown",
-    onClick: () => setIsOpen(!isOpen)
-  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "dropdown"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dropdown__button",
     "data-bs-toggle": "dropdown",
     "aria-expanded": isOpen ? "true" : "false",
-    "data-testid": "button"
+    "data-testid": "button",
+    onClick: () => setIsOpen(!isOpen)
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "selected-item",
     "data-testid": "button-text"

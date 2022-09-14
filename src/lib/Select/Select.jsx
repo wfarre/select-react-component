@@ -13,18 +13,22 @@ const Select = ({ data, handleSelect }) => {
     setIsOpen(false)
   };
 
-  console.log(isOpen);
+  const handleClick = (e) => {
+    setIsOpen(!isOpen)
+    const current = e.target;
+    current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
+  }
 
   return (
-    <div className="Select">
-      <div className="dropdown"  >
-        <button className={"dropdown__button"} data-bs-toggle="dropdown" aria-expanded={isOpen?"true":"false"} data-testid="button" onClick={() => setIsOpen(!isOpen)} onBlur={()=> setIsOpen(false)} >
+    <div className="Select"  >
+      <div className="dropdown" >
+        <div className={"dropdown__button"} data-bs-toggle="dropdown" aria-expanded={isOpen?"true":"false"} data-testid="button"   onClick={handleClick}  >
           <p className="selected-item" data-testid="button-text">{selectedItem}</p>
           <span className="icon-wrapper">
             <Arrow className="arrow-icon"/>
           </span>
-        </button>
-        <ul className={isOpen ? "dropdown__menu" : "dropdown__menu hide"} data-testid="dropdown">
+        </div>
+        <ul className={isOpen ? "dropdown__menu" : "dropdown__menu hide"} data-testid="dropdown" onMouseLeave={()=> setIsOpen(false)} >
           {data.map((item, key = 0) => {
             key++;
             return (
