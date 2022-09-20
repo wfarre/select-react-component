@@ -16,3 +16,6 @@
       "@babel/preset-react"
    ]
    }
+// {
+//    "presets": ["react-app"]
+//  }

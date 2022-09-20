@@ -1,4 +1,4 @@
-import Select from "./Select";
+import Select from "./lib/Select/Select";
 import {cleanup, fireEvent, render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom'
 

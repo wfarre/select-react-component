@@ -31,10 +31,18 @@ const Select = _ref => {
     setIsOpen(false);
   };
 
-  console.log(isOpen);
+  const handleClick = e => {
+    setIsOpen(!isOpen);
+    const current = e.target;
+    current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest"
+    });
+  };
+
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Select",
-    onMouseLeave: () => setIsOpen(false)
+    className: "Select"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dropdown"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -42,7 +50,7 @@ const Select = _ref => {
     "data-bs-toggle": "dropdown",
     "aria-expanded": isOpen ? "true" : "false",
     "data-testid": "button",
-    onClick: () => setIsOpen(!isOpen)
+    onClick: handleClick
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "selected-item",
     "data-testid": "button-text"
@@ -52,7 +60,8 @@ const Select = _ref => {
     className: "arrow-icon"
   }))), /*#__PURE__*/_react.default.createElement("ul", {
     className: isOpen ? "dropdown__menu" : "dropdown__menu hide",
-    "data-testid": "dropdown"
+    "data-testid": "dropdown",
+    onMouseLeave: () => setIsOpen(false)
   }, data.map(function (item) {
     let key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     key++;

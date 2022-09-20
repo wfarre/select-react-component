@@ -1,5 +1,5 @@
 import { Select } from "./lib";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { states } from "./statesData";
 
 
@@ -10,6 +10,8 @@ function App() {
   const handleSelect = (newValue) => {
     setValue(newValue)
   }
+
+  console.log(value);
 
   const stateData = states.map(state => {
     return state.name

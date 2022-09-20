@@ -1,3 +1,7 @@
+.Select {
+  width: 100%;
+}
+
 .dropdown {
   position: relative;
   width: 100%;
@@ -11,7 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 16*2);
   padding: 6.4px 16px;
   background-color: rgb(246, 246, 246);
   border: 1px solid #c5c5c5;
@@ -62,11 +66,13 @@
 
 .dropdown__menu__item {
   padding: 0;
+  width: 100%;
 }
 
 .dropdown__menu__item__content {
   padding: 3px 16px 3px 6.4px;
   margin: 0;
+  width: 100%;
 }
 
 .dropdown__menu__item:hover {
