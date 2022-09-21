@@ -1,9 +1,11 @@
 {
   "name": "select-react-component",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -46,6 +48,7 @@
     "babel-jest": "^29.0.1",
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.0.1",
+    "jest-watch-typeahead": "^0.6.5",
     "react-test-renderer": "^18.2.0"
   }
 }

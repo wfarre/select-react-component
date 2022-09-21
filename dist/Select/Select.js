@@ -26,8 +26,8 @@ const Select = _ref => {
   const [selectedItem, setSelectedItem] = (0, _react.useState)(data[0]);
 
   const handleOptionClicked = e => {
-    setSelectedItem(e.target.innerText);
-    handleSelect(e.target.innerText);
+    setSelectedItem(e.target.innerHTML);
+    handleSelect(e.target.innerHTML);
     setIsOpen(false);
   };
 
@@ -48,12 +48,13 @@ const Select = _ref => {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dropdown__button",
     "data-bs-toggle": "dropdown",
-    "aria-expanded": isOpen ? "true" : "false",
+    "aria-expanded": isOpen,
     "data-testid": "button",
     onClick: handleClick
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "selected-item",
-    "data-testid": "button-text"
+    "data-testid": "button-text",
+    value: selectedItem
   }, selectedItem), /*#__PURE__*/_react.default.createElement("span", {
     className: "icon-wrapper"
   }, /*#__PURE__*/_react.default.createElement(_caretDownSolid.ReactComponent, {
@@ -61,7 +62,8 @@ const Select = _ref => {
   }))), /*#__PURE__*/_react.default.createElement("ul", {
     className: isOpen ? "dropdown__menu" : "dropdown__menu hide",
     "data-testid": "dropdown",
-    onMouseLeave: () => setIsOpen(false)
+    onMouseLeave: () => setIsOpen(false),
+    hidden: !isOpen
   }, data.map(function (item) {
     let key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     key++;
@@ -69,10 +71,12 @@ const Select = _ref => {
       className: "dropdown__menu__item",
       key: key,
       onClick: handleOptionClicked,
-      "data-testid": "item"
+      "data-testid": "item",
+      value: item
     }, /*#__PURE__*/_react.default.createElement("p", {
       className: "dropdown__menu__item__content",
-      "data-testid": "content"
+      "data-testid": "content",
+      value: item
     }, item));
   }))));
 };
