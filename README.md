@@ -1,5 +1,7 @@
 # Getting started with the Select React Component
 
+A very simple but efficient select react component
+
 ## What is it?
 
 It is a dropdown menu component. When you click on it, a menu appears. From that menu, you choose an option, it will update the button.

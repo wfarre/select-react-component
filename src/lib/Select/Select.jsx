@@ -1,18 +1,37 @@
 import React,{ useState } from "react";
 import { ReactComponent as Arrow } from "./caret-down-solid.svg";
+import PropTypes from 'prop-types'; 
 
 import "./Select.css";
 
+/**
+ * Select React Componenent
+ * @param {array} data - data to display in the dropdown 
+ * @param {function} handleSelect - it will pass the modification to the parent component
+ *  when the user selects an option.
+ * @returns Select React Component
+ */
 const Select = ({ data, handleSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(data[0]);
 
+  /**
+   * When an option is selected, 
+   * it will update the the button's text to the selected option's text.
+   * @param e - event when clicked on the option
+   * 
+   *  */
   const handleOptionClicked = (e) => {
     setSelectedItem(e.target.innerHTML);
     handleSelect(e.target.innerHTML)
     setIsOpen(false)
   };
 
+  /**
+   * When the user clicks on the button,
+   *  it will open the dropdown menu.
+   * @param e - event when clicked on the button
+   */
   const handleClick = (e) => {
     setIsOpen(!isOpen)
     const current = e.target;
@@ -48,6 +67,11 @@ const Select = ({ data, handleSelect }) => {
     </div>
   );
 };
+
+Select.propTypes = {
+  data: PropTypes.array,
+  handleSelect: PropTypes.func
+}
 
 
 export default Select;

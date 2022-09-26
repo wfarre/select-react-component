@@ -11,12 +11,23 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _caretDownSolid = require("./caret-down-solid.svg");
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 require("./Select.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+/**
+ * Select React Componenent
+ * @param {array} data - data to display in the dropdown 
+ * @param {function} handleSelect - it will pass the modification to the parent component
+ *  when the user selects an option.
+ * @returns Select React Component
+ */
 const Select = _ref => {
   let {
     data,
@@ -24,12 +35,24 @@ const Select = _ref => {
   } = _ref;
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const [selectedItem, setSelectedItem] = (0, _react.useState)(data[0]);
+  /**
+   * When an option is selected, 
+   * it will update the the button's text to the selected option's text.
+   * @param e - event when clicked on the option
+   * 
+   *  */
 
   const handleOptionClicked = e => {
     setSelectedItem(e.target.innerHTML);
     handleSelect(e.target.innerHTML);
     setIsOpen(false);
   };
+  /**
+   * When the user clicks on the button,
+   *  it will open the dropdown menu.
+   * @param e - event when clicked on the button
+   */
+
 
   const handleClick = e => {
     setIsOpen(!isOpen);
@@ -80,5 +103,9 @@ const Select = _ref => {
   }))));
 };
 
+Select.propTypes = {
+  data: _propTypes.default.array,
+  handleSelect: _propTypes.default.func
+};
 var _default = Select;
 exports.default = _default;
