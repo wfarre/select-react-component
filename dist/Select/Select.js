@@ -48,7 +48,6 @@ const Select = _ref => {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "dropdown__button",
     "data-bs-toggle": "dropdown",
-    "aria-expanded": isOpen,
     "data-testid": "button",
     onClick: handleClick
   }, /*#__PURE__*/_react.default.createElement("p", {

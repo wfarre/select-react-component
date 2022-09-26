@@ -22,7 +22,7 @@ const Select = ({ data, handleSelect }) => {
   return (
     <div className="Select"  >
       <div className="dropdown" >
-        <div className={"dropdown__button"} data-bs-toggle="dropdown" aria-expanded={isOpen} data-testid="button" onClick={handleClick}  >
+        <div className={"dropdown__button"} data-bs-toggle="dropdown" data-testid="button" onClick={handleClick}  >
           <p className="selected-item" data-testid="button-text" value={selectedItem}>{selectedItem}</p>
           <span className="icon-wrapper">
             <Arrow className="arrow-icon"/>
